@@ -1,11 +1,12 @@
 ###############################################################
 # Program:
 #     Milestone 06, Moon Lander
-#     Brother {Burton, Falin, Ercanbrack}, CS165
+#     Brother Alvey, CS165
 # Author:
-#     your name here
+#     Amy Chambers
 # Summary:
-#     Put your summary code here... 
+#     Code needs to compile, and lander needs to be drawn on 
+#     the screen. 
 # Above and Beyond
 #     When you submit your final project (not for milestones),
 #     list anything here that you did to go above and beyond
