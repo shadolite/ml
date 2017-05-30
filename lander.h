@@ -9,6 +9,8 @@
 
 #ifndef LANDER_H
 #define LANDER_H
+#ifndef VELOCITY_H
+#define VELOCITY_H
 
 /*********************************************
  * LANDER
@@ -51,4 +53,5 @@ public:
    void draw();
 };
 
+#endif
 #endif

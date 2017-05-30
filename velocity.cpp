@@ -13,15 +13,12 @@
  * Velocity: Constructor
  * Initializes the velocity
  *****************************************/
-//Velocity::Velocity()
-//{
-
-//}
-
-//Velocity::Velocity(float Dx, float Dy)
-//{
-//}
-
+Velocity::Velocity(float Dx, float Dy) : Dx(0.0), Dy(0.0)
+{
+   setDx(Dx);
+   setDy(Dy);
+}
+      
 /******************************************
  * getDx
  * 

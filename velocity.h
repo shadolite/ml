@@ -21,9 +21,9 @@ private:
    float Dy;
 
 public:
-//   constructor
-//   Velocity():
-//   Velocity(float, float):
+   //constructors
+   Velocity(): Dx(0.0), Dy(0.0) {}
+   Velocity(float Dx, float Dy):
 
    //getters
    float getDx();
