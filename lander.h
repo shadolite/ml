@@ -12,6 +12,8 @@
 #ifndef VELOCITY_H
 #define VELOCITY_H
 
+#include "velocity.h"
+#include "point.h"
 /*********************************************
  * LANDER
  * Moon Lander.
@@ -29,7 +31,8 @@ private:
    
 public:
    //constructors
-   //Lander():
+   Lander() : velocity(0.0, 0.0), alive(TRUE), landed(FALSE),
+      fuel(20), thrust(TRUE) {}
    
    //getters
    Point getPoint();

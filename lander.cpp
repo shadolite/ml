@@ -15,10 +15,10 @@
  * Lander: Constructor
  * Initializes the lander
  *****************************************/
-//Lander::Lander()
-//{
+Lander::Lander()
+{
 
-//}
+}
 
 /******************************************
  * getVelocity
