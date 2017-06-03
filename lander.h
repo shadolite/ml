@@ -9,8 +9,6 @@
 
 #ifndef LANDER_H
 #define LANDER_H
-#ifndef VELOCITY_H
-#define VELOCITY_H
 
 #include "velocity.h"
 #include "point.h"
@@ -31,12 +29,12 @@ private:
    
 public:
    //constructors
-   Lander() : velocity(0.0, 0.0), alive(TRUE), landed(FALSE),
-      fuel(20), thrust(TRUE) {}
+   Lander() : velocity(0.0, 0.0), alive(true), landed(false),
+      fuel(20), thrust(true) {}
    
    //getters
-   Point getPoint();
-   Velocity getVelocity();
+   Point getPoint() const;
+   Velocity getVelocity() const;
    bool isAlive();
    bool isLanded();
    int getFuel();
@@ -56,5 +54,4 @@ public:
    void draw();
 };
 
-#endif
 #endif

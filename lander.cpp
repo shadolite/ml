@@ -10,21 +10,23 @@
 #include "lander.h"
 #include "point.h"
 #include "velocity.h"
+#include "uiDraw.h"
 
 /******************************************
- * Lander: Constructor
- * Initializes the lander
+ * getPoint
+ * Return current point
  *****************************************/
-Lander::Lander()
+Point Lander::getPoint() const
 {
-
+   return point;
 }
+
 
 /******************************************
  * getVelocity
  * Return current velocity
  *****************************************/
-Velocity Lander::getVelocity();
+Velocity Lander::getVelocity() const
 {
    return velocity;
 }
@@ -33,7 +35,7 @@ Velocity Lander::getVelocity();
  * isAlive
  * Return alive status
  *****************************************/
-bool Lander::isAlive();
+bool Lander::isAlive()
 {
    return alive;
 }
@@ -42,7 +44,7 @@ bool Lander::isAlive();
  * isLanded
  * Return landed status
  *****************************************/
-bool Lander::isLanded();
+bool Lander::isLanded()
 {
    return landed;
 }
@@ -51,7 +53,7 @@ bool Lander::isLanded();
  * getFuel
  * Return remaining fuel
  *****************************************/
-int Lander::getFuel();
+int Lander::getFuel()
 {
    return fuel;
 }
@@ -60,7 +62,7 @@ int Lander::getFuel();
  * canThrust
  * Return thrust capability
  *****************************************/
-bool Lander::canThrust();
+bool Lander::canThrust()
 {
    return thrust;
 }
@@ -69,7 +71,7 @@ bool Lander::canThrust();
  * setLanded
  * Set landed status
  *****************************************/
-void Lander::setLanded(const bool landed);
+void Lander::setLanded(const bool landed)
 {
    this->landed = landed;
 }
@@ -78,7 +80,7 @@ void Lander::setLanded(const bool landed);
  * setAlive
  * Set alive status
  *****************************************/
-void Lander::setAlive(const bool alive);
+void Lander::setAlive(const bool alive)
 {
    this->alive = alive;
 }
@@ -87,7 +89,7 @@ void Lander::setAlive(const bool alive);
  * setFuel
  * Set remaining amount of fuel
  *****************************************/
-void Lander::setFuel(const int fuel);
+void Lander::setFuel(const int fuel)
 {
    this->fuel = fuel;
 }
@@ -96,46 +98,66 @@ void Lander::setFuel(const int fuel);
  * applyGravity
  * Apply gravity to lander object
  *****************************************/
-void Lander::applyGravity(const float gravity);
+void Lander::applyGravity(const float gravity)
 {
+   velocity.setDy(velocity.getDy() - gravity);
 }
 
 /******************************************
  * applyThrustLeft
  * Apply left thrust to velocity
  *****************************************/
-void Lander::applyThrustLeft();
+void Lander::applyThrustLeft()
 {
+   if (alive && Lander::canThrust() && !landed)
+   {
+      fuel--;
+      velocity.setDx(velocity.getDx() + 1); //update later!
+   };
+   
 }
 
 /******************************************
  * applyThrustRight
  * Apply right thrust to velocity
  *****************************************/
-void Lander::applyThrustRight();
+void Lander::applyThrustRight()
 {
+   if (alive && Lander::canThrust() && !landed)
+   {
+      fuel--;
+      velocity.setDx(velocity.getDx() - 1); //update later!
+   };   
 }
 
 /******************************************
  * applyThrustBottom
  * Apply bottom thrust to velocity
  *****************************************/
-void Lander::applyThrustBottom();
+void Lander::applyThrustBottom()
 {
+   if (alive && Lander::canThrust() && !landed)
+   {
+      fuel--; //update!!
+      velocity.setDy(velocity.getDy() + 1); //update later!
+   };
 }
 
 /******************************************
  * advance
  * Advance the lander with velocity and gravity
  *****************************************/
-void Lander::advance();
+void Lander::advance()
 {
+   point.setX(point.getX() + velocity.getDx());
+   point.setY(point.getY() + velocity.getDy());
 }
 
 /******************************************
  * draw
  * Draw lander on screen
  *****************************************/
-void Lander::draw();
+void Lander::draw()
 {
+    drawLander(point);
 }

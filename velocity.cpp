@@ -10,16 +10,6 @@
 #include "velocity.h"
 
 /******************************************
- * Velocity: Constructor
- * Initializes the velocity
- *****************************************/
-Velocity::Velocity(float Dx, float Dy) : Dx(0.0), Dy(0.0)
-{
-   setDx(Dx);
-   setDy(Dy);
-}
-      
-/******************************************
  * getDx
  * 
  *****************************************/

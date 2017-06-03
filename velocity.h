@@ -23,7 +23,7 @@ private:
 public:
    //constructors
    Velocity(): Dx(0.0), Dy(0.0) {}
-   Velocity(float Dx, float Dy):
+  Velocity(float Dx, float Dy): Dx(0.0), Dy(0.0) {}
 
    //getters
    float getDx();
