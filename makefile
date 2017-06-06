@@ -5,8 +5,7 @@
 # Author:
 #     Amy Chambers
 # Summary:
-#     Code needs to compile, and lander needs to be drawn on 
-#     the screen. 
+#     Complete the Moon Lander game.
 # Above and Beyond
 #     When you submit your final project (not for milestones),
 #     list anything here that you did to go above and beyond
@@ -54,7 +53,7 @@ driver.o: driver.cpp game.h uiInteract.h
 #
 # Then, don't forget to add them to the dependecy list for a.out above.
 #######################################################################
-lander.o: lander.cpp lander.h point.h velocity.h
+lander.o: lander.cpp lander.h point.h velocity.h uiDraw.h
 	g++ -c lander.cpp
 
 velocity.o: velocity.cpp velocity.h

@@ -19,18 +19,25 @@
 class Lander
 {
 private:
-   Point point;
+   Point lPoint;
    Velocity velocity;
    bool alive;
    bool landed;
    int fuel;
    bool thrust;
    float gravity;
+
+   void setGravity(float);
+   void setPoint(Point);
+   void setVelocity(Velocity);
+   void setThrust(bool);
    
 public:
    //constructors
-   Lander() : velocity(0.0, 0.0), alive(true), landed(false),
-      fuel(20), thrust(true) {}
+   Lander();
+   
+   Lander(Point lPoint, Velocity velocity, bool alive,
+          bool landed, int fuel, bool thrust, float gravity);
    
    //getters
    Point getPoint() const;

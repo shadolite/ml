@@ -12,15 +12,75 @@
 #include "velocity.h"
 #include "uiDraw.h"
 
+//float const Lander::gravity = 0.1;
+Lander::Lander()  
+{
+   lPoint.setX(170.0);
+   lPoint.setY(170.0);
+   velocity.setDx(0.0);
+   velocity.setDy(0.0);
+   setAlive(true);
+   setLanded(false);
+   setFuel(500);   
+}
+Lander::Lander(Point lPoint, Velocity velocity, bool alive,
+               bool landed, int fuel, bool thrust, float gravity) :
+      lPoint(170.0, 170.0), velocity(0.2, 0.0), alive(true),
+      landed(false), fuel(500), thrust(true), gravity(0.1)
+{
+   setPoint(lPoint);
+   setVelocity(velocity);
+   setAlive(alive);
+   setLanded(landed);
+   setFuel(fuel);
+   setThrust(thrust);
+   setGravity(gravity);
+}
+
+/******************************************
+ * setThrust
+ * Set initial thrust capabilities
+ *****************************************/
+void Lander::setThrust(bool thrust)
+{
+   this->thrust = thrust;
+}
+
+/******************************************
+ * setVelocity
+ * Set initial velocity
+ *****************************************/
+void Lander::setVelocity(Velocity velocity)
+{
+   this->velocity = velocity;
+}
+
+/******************************************
+ * setGravity
+ * Set gravity
+ *****************************************/
+void Lander::setGravity(float gravity)
+{
+   this->gravity = gravity;
+}
+
+/******************************************
+ * setPoint
+ * Set initial point
+ *****************************************/
+void Lander::setPoint(Point lPoint)
+{
+   this->lPoint = lPoint;
+}
+
 /******************************************
  * getPoint
  * Return current point
  *****************************************/
 Point Lander::getPoint() const
 {
-   return point;
+   return lPoint;
 }
-
 
 /******************************************
  * getVelocity
@@ -112,7 +172,7 @@ void Lander::applyThrustLeft()
    if (alive && Lander::canThrust() && !landed)
    {
       fuel--;
-      velocity.setDx(velocity.getDx() + 1); //update later!
+      velocity.setDx(velocity.getDx() + 0.1); 
    };
    
 }
@@ -126,7 +186,7 @@ void Lander::applyThrustRight()
    if (alive && Lander::canThrust() && !landed)
    {
       fuel--;
-      velocity.setDx(velocity.getDx() - 1); //update later!
+      velocity.setDx(velocity.getDx() - 0.1); 
    };   
 }
 
@@ -138,8 +198,8 @@ void Lander::applyThrustBottom()
 {
    if (alive && Lander::canThrust() && !landed)
    {
-      fuel--; //update!!
-      velocity.setDy(velocity.getDy() + 1); //update later!
+      fuel -= 3;
+      velocity.setDy(velocity.getDy() + 0.3); 
    };
 }
 
@@ -149,8 +209,8 @@ void Lander::applyThrustBottom()
  *****************************************/
 void Lander::advance()
 {
-   point.setX(point.getX() + velocity.getDx());
-   point.setY(point.getY() + velocity.getDy());
+   lPoint.setX(lPoint.getX() + velocity.getDx());
+   lPoint.setY(lPoint.getY() + velocity.getDy());
 }
 
 /******************************************
@@ -159,5 +219,5 @@ void Lander::advance()
  *****************************************/
 void Lander::draw()
 {
-    drawLander(point);
+    drawLander(lPoint);
 }
